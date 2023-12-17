@@ -1,7 +1,10 @@
 #!/usr/bin/python3
-""" City Module for HBNB project """
+"""This is the city class"""
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
+from models.place import Place
+from sqlalchemy import Column, Integer, String
+from sqlalchemy import ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 
 
