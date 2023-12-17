@@ -12,7 +12,7 @@ class FileStorage:
         """Returns a dictionary of models of one type of class
         currently in storage"""
         if cls is None:
-            return FileStorage.__objects
+            return self.__objects
         else:
             temp = {}
             for key, val in self.__objects.items():
@@ -59,8 +59,6 @@ class FileStorage:
 
     def delete(self, obj=None):
         ''' delete obj from __objects if it's inside '''
-        if obj is None:
-            return
-        if obj in self.__objects:
-            del self.__objects[obj]
-            self.save()
+        if obj:
+            key = '{}.{}'.format(type(obj).__name__, obj.id)
+            del self.__objects[key]
