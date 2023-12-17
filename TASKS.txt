@@ -7,7 +7,7 @@ Tasks:
 4: Done
 5: Done
 6: Done the tasks bbut don't know the problem
-7:
-8
+7: Also Done but checkers dont
+8: 
 9
 10
