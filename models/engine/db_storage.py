@@ -2,10 +2,16 @@
 """This module defines a class to manage file storage for hbnb clone"""
 import json
 from models.base_model import BaseModel
-import os
+from os import getenv
 from models.base_model import Base
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker, scoped_session
+from models.state import State
+from models.city import City
+from models.user import User
+from models.place import Place
+from models.review import Review
+from models.amenity import Amenity
 
 
 class DBStorage:
@@ -14,29 +20,31 @@ class DBStorage:
     __session = None
 
     def __init__(self):
-        '''initializes the DBStorage class'''
-        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
-                                        os.environ.get('HBNB_MYSQL_USER'),
-                                        os.environ.get('HBNB_MYSQL_PWD'),
-                                        os.environ.get('HBNB_MYSQL_HOST'),
-                                        os.environ.get('HBNB_MYSQL_DB')),
+        '''initializes the database engine'''
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
+                                      .format(getenv('HBNB_MYSQL_USER'),
+                                              getenv('HBNB_MYSQL_PWD'),
+                                              getenv('HBNB_MYSQL_HOST'),
+                                              getenv('HBNB_MYSQL_DB')),
                                       pool_pre_ping=True)
-        
-        if os.environ.get('HBNB_ENV') == 'test':
+        if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
 
-
     def all(self, cls=None):
-        '''returns a dictionary of all objects'''
-        from models import State, City, User, Place, Review, Amenity
+        '''returns a dictionary of all objects
+        Returns:
+            returns a dictionary of all objects
+        '''
         classes = [State, City, User, Place, Review, Amenity]
         new_dict = {}
         if cls is None:
             for cls in classes:
-                for obj in self.__session.query(cls).all():
+                for obj in self.__session.query(cls):
                     key = '{}.{}'.format(type(obj).__name__, obj.id)
                     new_dict[key] = obj
         else:
+            if type(cls) is str:
+                cls = eval(cls)
             for obj in self.__session.query(cls).all():
                 key = '{}.{}'.format(type(obj).__name__, obj.id)
                 new_dict[key] = obj
