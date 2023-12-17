@@ -14,7 +14,7 @@ from models.review import Review
 from models.amenity import Amenity
 
 
-class DBStorage:
+##class DBStorage:
     """This class manages storage of hbnb models in JSON format"""
     __engine = None
     __session = None
