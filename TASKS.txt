@@ -2,7 +2,7 @@
 Tasks:
 0: Done
 1:
-2: Still have the /models /tests part 
+2: in progress
 3: Done
 4: Done
 5: Done
