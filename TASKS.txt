@@ -6,7 +6,7 @@ Tasks:
 3: Done
 4: Done
 5: Done
-6: Done the tasks bbut don't know the problem
+6: Done
 7: Also Done but some checkers arent workin
 8: Also Done but some checkers arent workin
 9:
