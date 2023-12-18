@@ -1,1 +1,114 @@
-{"State.353fd39c-4e29-44de-91c1-110bc0a241e8": {"name": "casablanca", "id": "353fd39c-4e29-44de-91c1-110bc0a241e8", "created_at": "2023-12-18T10:45:48.023111", "updated_at": "2023-12-18T10:45:48.023134", "__class__": "State"}}
+{
+    "State.353fd39c-4e29-44de-91c1-110bc0a241e8": {
+        "name": "casablanca",
+        "id": "353fd39c-4e29-44de-91c1-110bc0a241e8",
+        "created_at": "2023-12-18T10:45:48.023111",
+        "updated_at": "2023-12-18T10:45:48.023134",
+        "__class__": "State"
+    },
+    "State.c36e46aa-9777-4f94-8430-e388901b387c": {
+        "name": "nyc",
+        "id": "c36e46aa-9777-4f94-8430-e388901b387c",
+        "created_at": "2023-12-18T10:47:51.238247",
+        "updated_at": "2023-12-18T10:47:51.238265",
+        "__class__": "State"
+    },
+    "Place.4cb3a0e5-3fd7-4e4d-9a0a-554960c0f5d1": {
+        "city_id": "0001",
+        "user_id": "0001",
+        "name": "My little house",
+        "number_rooms": 4,
+        "number_bathrooms": 2,
+        "max_guest": 10,
+        "price_by_night": 300,
+        "latitude": 37.773972,
+        "longitude": -122.431297,
+        "id": "4cb3a0e5-3fd7-4e4d-9a0a-554960c0f5d1",
+        "created_at": "2023-12-18T11:01:19.236920",
+        "updated_at": "2023-12-18T11:01:19.236939",
+        "__class__": "Place"
+    },
+    "Place.49fe8822-7c20-479a-bac9-cfca14495332": {
+        "city_id": "0001",
+        "user_id": "0001",
+        "id": "49fe8822-7c20-479a-bac9-cfca14495332",
+        "created_at": "2023-12-18T11:02:13.008169",
+        "updated_at": "2023-12-18T11:02:13.008192",
+        "__class__": "Place"
+    },
+    "Place.9a768869-6c3e-4a34-a3ee-0a53ed19cef2": {
+        "city_id": "\"0001\"",
+        "user_id": "\"0001\"",
+        "name": "\"my_little_house\"",
+        "number_rooms": "4",
+        "number_bathrooms": "2",
+        "max_guest": "10",
+        "price_by_night": "300",
+        "latitude": "37.773972",
+        "longitude": "-122.431297",
+        "id": "9a768869-6c3e-4a34-a3ee-0a53ed19cef2",
+        "created_at": "2023-12-18T11:48:58.000118",
+        "updated_at": "2023-12-18T11:48:58.000130",
+        "__class__": "Place"
+    },
+    "Place.a0a76b4e-9117-48e1-ac6e-74463b7ef677": {
+        "city_id": "\"0001\"",
+        "user_id": "\"0001\"",
+        "name": "\"my_big_house\"",
+        "number_rooms": "4",
+        "number_bathrooms": "2",
+        "max_guest": "10",
+        "price_by_night": "300",
+        "latitude": "37.773972",
+        "longitude": "-122.431297",
+        "id": "a0a76b4e-9117-48e1-ac6e-74463b7ef677",
+        "created_at": "2023-12-18T11:49:11.843893",
+        "updated_at": "2023-12-18T11:49:11.843911",
+        "__class__": "Place"
+    },
+    "Place.bc7de933-14ed-472a-a566-bdafed1afbd2": {
+        "city_id": "\"0001\"",
+        "user_id": "\"0001\"",
+        "name": "\"my_dammy_house\"",
+        "number_rooms": "4",
+        "number_bathrooms": "2",
+        "max_guest": "10",
+        "price_by_night": "300",
+        "latitude": "37.773972",
+        "longitude": "-122.431297",
+        "id": "bc7de933-14ed-472a-a566-bdafed1afbd2",
+        "created_at": "2023-12-18T11:50:51.427785",
+        "updated_at": "2023-12-18T11:50:51.427816",
+        "__class__": "Place"
+    },
+    "Place.ef3ad7f3-5dd0-4cd6-800c-c1c102cccc79": {
+        "city_id": "\"0001\"",
+        "user_id": "\"0001\"",
+        "name": "\"my_s_house\"",
+        "number_rooms": "4",
+        "number_bathrooms": "2",
+        "max_guest": "10",
+        "price_by_night": "300",
+        "latitude": "37.773972",
+        "longitude": "-122.431297",
+        "id": "ef3ad7f3-5dd0-4cd6-800c-c1c102cccc79",
+        "created_at": "2023-12-18T11:51:40.423721",
+        "updated_at": "2023-12-18T11:51:40.423733",
+        "__class__": "Place"
+    },
+    "Place.c458a81e-f22a-4568-824b-cf6c858f1452": {
+        "city_id": "0001",
+        "user_id": "0001",
+        "name": "my_s_house",
+        "number_rooms": "4",
+        "number_bathrooms": "2",
+        "max_guest": "10",
+        "price_by_night": "300",
+        "latitude": "37.773972",
+        "longitude": "-122.431297",
+        "id": "c458a81e-f22a-4568-824b-cf6c858f1452",
+        "created_at": "2023-12-18T11:53:23.873956",
+        "updated_at": "2023-12-18T11:53:23.873971",
+        "__class__": "Place"
+    }
+}
