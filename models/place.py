@@ -6,7 +6,7 @@ from sqlalchemy import Column, Table, String, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from os import getenv
 import models
-
+from models.review import Review
 
 class Place(BaseModel, Base):
     """This is the class for Place
@@ -35,3 +35,15 @@ class Place(BaseModel, Base):
     latitude = Column(Float)
     longitude = Column(Float)
     amenity_ids = []
+    if getenv("HBNB_TYPE_STORAGE") == "db":
+        reviews = relationship("Review", cascade='all, delete, delete-orphan',
+                               backref="place")
+    else:
+        @property
+        def reviews(self):
+            """getter attribute returns the list of Review instances"""
+            lista = []
+            for key in models.storage.all(Review).values():
+                if key.place_id == self.id:
+                    lista.append(key)
+            return lista
