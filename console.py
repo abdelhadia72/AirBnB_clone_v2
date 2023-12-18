@@ -2,7 +2,6 @@
 """ Console Module """
 import cmd
 import sys
-import re
 from models.base_model import BaseModel
 from models.__init__ import storage
 from models.user import User
@@ -119,18 +118,18 @@ class HBNBCommand(cmd.Cmd):
         try:
             if not args:
                 raise SyntaxError()
-            args = re.sub(r'name="([^"]+)"', lambda match: f'name="{match.group(1).lower().replace(" ", "_")}"', args)
+            
             arg_list = args.split(" ")
             kw = {}
             for arg in arg_list[1:]:
                 arg_splited = arg.split("=")
                 if len(arg_splited) == 2:
-                    key = arg_splited[0]
-                    value = arg_splited[1]
+                    arg_splited[1] = eval(arg_splited[1])
 
-                    if isinstance(value, str):
-                        value = value.replace('\\"', '').strip('\"')
-                    kw[key] = value
+                    if isinstance(arg_splited[1], str):
+                        arg_splited[1] = arg_splited[1].replace(
+                            "_", " ").replace('"', '\\"')
+                    kw[arg_splited[0]] = arg_splited[1]
         except SyntaxError:
             print("** class name missing **")
         except NameError:
