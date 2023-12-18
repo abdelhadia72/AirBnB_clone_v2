@@ -8,6 +8,6 @@ from sqlalchemy.orm import relationship
 class Review(Base, BaseModel):
     """ Review classto store review information """
     __tablename__ = 'reviews'
-    id = Column(Integer, primary_key=True)
-    content = Column(String)
-    user_id = Column(Integer, ForeignKey('users.id'))
+    id = Column(Integer, primary_key=True,  nullable=False)
+    content = Column(String(60),  nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id'),  nullable=False)
