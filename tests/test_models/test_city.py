@@ -36,6 +36,29 @@ class Test_PEP8(unittest.TestCase):
                          "Found code style errors (and warnings).")
 
 
+class TestCity(unittest.TestCase):
+    """this will test the city class X"""
+
+    @classmethod
+    def setUpClass(cls):
+        """set up for test"""
+        cls.city = City()
+        cls.city.name = "LA"
+        cls.city.state_id = "CA"
+
+    @classmethod
+    def teardown(cls):
+        """at the end of the test this will tear it down"""
+        del cls.city
+
+    def tearDown(self):
+        """teardown"""
+        try:
+            os.remove("file.json")
+        except Exception:
+            pass
+
+
 
 if __name__ == "__main__":
     unittest.main()
