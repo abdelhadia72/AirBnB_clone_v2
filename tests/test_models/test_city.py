@@ -64,6 +64,18 @@ class TestCity(unittest.TestCase):
         p = style.check_files(['models/city.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
 
+    def test_checking_for_docstring_City(self):
+        """checking for docstrings"""
+        self.assertIsNotNone(City.__doc__)
+
+    def test_attributes_City(self):
+        """chekcing if City have attributes"""
+        self.assertTrue('id' in self.city.__dict__)
+        self.assertTrue('created_at' in self.city.__dict__)
+        self.assertTrue('updated_at' in self.city.__dict__)
+        self.assertTrue('state_id' in self.city.__dict__)
+        self.assertTrue('name' in self.city.__dict__)
+
 
 
 if __name__ == "__main__":
