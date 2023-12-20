@@ -79,3 +79,33 @@ class test_Amenity_BaseModel(unittest.TestCase):
                     self.assertIs(type(instance.__dict__[attr]), types)
             self.assertEqual(instance.name, "Barbie")
 
+    def test_user_id_and_createat(self):
+        """testing id for every user"""
+        user_1 = Amenity()
+        sleep(2)
+        user_2 = Amenity()
+        sleep(2)
+        user_3 = Amenity()
+        sleep(2)
+        list_users = [user_1, user_2, user_3]
+        for instance in list_users:
+            user_id = instance.id
+            with self.subTest(user_id=user_id):
+                self.assertIs(type(user_id), str)
+        self.assertNotEqual(user_1.id, user_2.id)
+        self.assertNotEqual(user_1.id, user_3.id)
+        self.assertNotEqual(user_2.id, user_3.id)
+        self.assertTrue(user_1.created_at <= user_2.created_at)
+        self.assertTrue(user_2.created_at <= user_3.created_at)
+        self.assertNotEqual(user_1.created_at, user_2.created_at)
+        self.assertNotEqual(user_1.created_at, user_3.created_at)
+        self.assertNotEqual(user_3.created_at, user_2.created_at)
+
+    def test_str_method(self):
+        """
+        Testin str magic method
+        """
+        inst = Amenity()
+        str_output = "[Amenity] ({}) {}".format(inst.id, inst.__dict__)
+        self.assertEqual(str_output, str(inst))
+
