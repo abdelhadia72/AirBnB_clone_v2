@@ -12,6 +12,7 @@ import inspect
 import unittest
 storage_t = getenv("HBNB_TYPE_STORAGE")
 
+
 class test_Amenity(test_basemodel):
     """ """
 
@@ -29,6 +30,7 @@ class test_Amenity(test_basemodel):
 
 class Test_PEP8(unittest.TestCase):
     """test User"""
+
     def test_pep8_user(self):
         """test pep8 style"""
         pep8style = pycodestyle.StyleGuide(quiet=True)
@@ -37,9 +39,9 @@ class Test_PEP8(unittest.TestCase):
                          "Found code style errors (and warnings).")
 
 
-
 class test_inherit_basemodel(unittest.TestCase):
     """Test if user inherit from BaseModel"""
+
     def test_instance(self):
         """check if user is an instance of BaseModel"""
         user = Amenity()
@@ -50,25 +52,26 @@ class test_inherit_basemodel(unittest.TestCase):
 
 class test_Amenity_BaseModel(unittest.TestCase):
     """Testing user class"""
+
     def test_instances(self):
         with patch('models.amenity'):
             instance = Amenity()
             self.assertEqual(type(instance), Amenity)
             instance.name = "Barbie"
             expectec_attrs_types = {
-                    "id": str,
-                    "created_at": datetime,
-                    "updated_at": datetime,
-                    "name": str,
-                    }
+                "id": str,
+                "created_at": datetime,
+                "updated_at": datetime,
+                "name": str,
+            }
             inst_dict = instance.to_dict()
             expected_dict_attrs = [
-                    "id",
-                    "created_at",
-                    "updated_at",
-                    "name",
-                    "__class__"
-                    ]
+                "id",
+                "created_at",
+                "updated_at",
+                "name",
+                "__class__"
+            ]
             self.assertCountEqual(inst_dict.keys(), expected_dict_attrs)
             self.assertEqual(inst_dict['name'], 'Barbie')
             self.assertEqual(inst_dict['__class__'], 'Amenity')
@@ -109,7 +112,6 @@ class test_Amenity_BaseModel(unittest.TestCase):
         str_output = "[Amenity] ({}) {}".format(inst.id, inst.__dict__)
         self.assertEqual(str_output, str(inst))
 
-
     @patch('models.storage')
     def test_save_method(self, mock_storage):
         """Testing save method and if it update"""
@@ -146,7 +148,6 @@ class TestAmenity(unittest.TestCase):
         else:
             self.assertEqual(amenity.name, "")
 
-
     def test_to_dict_creates_dict(self):
         """test to_dict method creates a dictionary with proper attrs"""
         am = Amenity()
@@ -170,10 +171,8 @@ class TestAmenity(unittest.TestCase):
         self.assertEqual(new_d["created_at"], am.created_at.strftime(t_format))
         self.assertEqual(new_d["updated_at"], am.updated_at.strftime(t_format))
 
-
     def test_str(self):
         """test that the str method has the correct output"""
         amenity = Amenity()
         string = "[Amenity] ({}) {}".format(amenity.id, amenity.__dict__)
         self.assertEqual(string, str(amenity))
-
