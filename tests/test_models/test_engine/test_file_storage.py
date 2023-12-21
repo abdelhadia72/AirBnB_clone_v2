@@ -38,7 +38,7 @@ class DBStorage:
         """
         dic = {}
         if cls:
-            if type(cls) is str:
+            if isinstance(cls, str):
                 cls = eval(cls)
             query = self.__session.query(cls)
             for ele in query:
