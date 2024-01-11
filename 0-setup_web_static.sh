@@ -31,7 +31,7 @@ server {
     }
 
     location /redirect_me {
-        return 301 http://cuberule.com/;
+        return 301 https://www.youtube.com/watch?v=fx2Z5ZD_Rbo;
     }
 
     error_page 404 /404.html;
