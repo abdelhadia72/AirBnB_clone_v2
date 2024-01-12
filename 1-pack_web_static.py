@@ -9,8 +9,7 @@ def do_pack():
     """ Creates a compressed archive of web_static folder """
     try:
         local("mkdir -p versions")
-        local(f"tar -cvzf versions/web_static_{
-            time.strftime('%Y%m%d%H%M%S')}.tgz "
+        local(f"tar -cvzf versions/web_static_{time.strftime('%Y%m%d%H%M%S')}.tgz "
               f"web_static/")
         return (
             f"versions/web_static_{time.strftime('%Y%m%d%H%M%S')}.tgz"
