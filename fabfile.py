@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 """ Compressed archive creation script """
 
+from invoke import task
 from fabric.api import local
 import time
 
+@task
 def do_pack():
     """ Creates a compressed archive of web_static folder """
     try:
