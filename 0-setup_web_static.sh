@@ -10,8 +10,6 @@ apt-get install -y nginx
 path="/data/web_static/releases/test/"
 mkdir -p $path && touch $path/index.html
 
-#!/bin/bash
-
 echo "
 <html>
   <head>
