@@ -1,36 +1,24 @@
-#!/usr/bin/env bash
-# sets up your web servers 
-# for the deployment of web_static
+from fabric.api import local
+from datetime import datetime
+import os
 
-# install nginx 
-apt-get update -y
-apt-get install -y nginx
+def do_pack():
+    """Generates a .tgz archive from the contents of the web_static folder."""
+    try:
+        # Create the versions folder if it doesn't exist
+        if not os.path.exists("versions"):
+            local("mkdir versions")
 
-# touch index.html to dir if exest or not 
-path="/data/web_static/releases/test/"
-mkdir -p $path && touch $path/index.html
+        # Generate the archive name using the current timestamp
+        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        archive_name = f"web_static_{timestamp}.tgz"
 
-echo "
-<html>
-  <head>
-  </head>
-  <body>
-    Holberton School
-  </body>
-</html>
-" | sudo tee /data/web_static/releases/test/index.html
+        # Pack the contents of web_static into the archive
+        local(f"tar -cvzf versions/{archive_name} web_static")
 
+        # Return the path of the generated archive
+        return f"versions/{archive_name}"
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
 
-# creat a new symblic link
-ln -fs /data/web_static/current /data/web_static/releases/test/
-
-# change ownership
-sudo chown -R ubuntu:ubuntu /data/
-
-# update the Nginx configuration
-sudo sed -i '/location \/hbnb_static\//a \
-    alias /data/web_static/current/;' /etc/nginx/sites-available/default
-
-
-# restart nginx
-sudo service nginx restart
