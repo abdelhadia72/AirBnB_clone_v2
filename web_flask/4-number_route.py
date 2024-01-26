@@ -17,6 +17,12 @@ def hbnb():
     return 'HBNB'
 
 
+@app.route('/c/<text>', strict_slashes=False)
+def c(text):
+    """ show varible text """
+    return f'C {text.replace("_", " ")}'
+
+
 @app.route('/python/', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python(text='is_cool'):
