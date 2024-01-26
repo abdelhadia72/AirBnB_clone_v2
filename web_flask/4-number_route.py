@@ -32,6 +32,7 @@ def python(text='is_cool'):
 
 @app.route('/number/<int:n>')
 def check_integer(n):
+    """ Show only integers """
     return (f"{n} is an integer")
 
 
