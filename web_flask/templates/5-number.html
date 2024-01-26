@@ -4,10 +4,6 @@
         <TITLE>HBNB</TITLE>
     </HEAD>
     <BODY>
-        {% if 'number_template' in request.url_rule.rule %}
-        <h1>{{ n }}</h1>
-        {% elif 'number_odd_or_even' in request.url_rule.rule %}
-            <h1>{{ n }} is {{ "even" if n%2 == 0 else "odd" }}</h1>
-        {% endif %}
+        <H1>Number: {{n}}</H1>
     </BODY>
 </HTML>

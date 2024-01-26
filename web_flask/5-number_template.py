@@ -36,7 +36,6 @@ def check_integer(n):
     return (f"{n} is a number")
 
 
-@app.route('/number_odd_or_even/<int:n>')
 @app.route('/number_template/<int:n>')
 def number_template(n):
     """ Show only integers """
