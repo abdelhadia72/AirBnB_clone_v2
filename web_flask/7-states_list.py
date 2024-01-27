@@ -7,16 +7,16 @@ from models.state import State
 app = Flask(__name__)
 
 
+def handle_teardown():
+    """ close storage """
+    storage.close()
+
+
 @app.route('/states_list', strict_slashes=False)
 def state_list():
     """ display page """
     status = storage.all(State).values()
     return render_template("7-states_list.html", states=status)
-
-
-def handle_teardown():
-    """ close storage """
-    storage.close()
 
 
 if __name__ == '__main__':
