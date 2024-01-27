@@ -10,17 +10,18 @@ app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def handle_teardown(self):
+def handle_teardown():
     """ close storage """
     storage.close()
 
 
-@app.route('/states_list', strict_slashes=False)
-def state_list():
+@app.route('/cities_by_states', strict_slashes=False)
+def cities_by_states():
     """ display page """
+    states = storage.all(State).values()
     return render_template(
-        "7-states_list.html",
-        states=storage.all(State).values())
+        "8-cities_by_states.html",
+        states=states)
 
 
 if __name__ == '__main__':
