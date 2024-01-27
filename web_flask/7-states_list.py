@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def handle_teardown(self):
+def close(error):
     """ close storage """
     storage.close()
 
@@ -16,9 +16,8 @@ def handle_teardown(self):
 @app.route('/states_list', strict_slashes=False)
 def state_list():
     """ display page """
-    return render_template(
-        "7-states_list.html",
-        states=storage.all(State).values())
+    status = storage.all(State).values()
+    return render_template("7-states_list.html", states=status)
 
 
 if __name__ == '__main__':

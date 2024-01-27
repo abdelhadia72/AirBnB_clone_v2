@@ -5,7 +5,9 @@ import uuid
 import models
 from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime
-
+from models.base_model import BaseModel, Base
+from sqlalchemy import Column, String, Integer, Float, DateTime, ForeignKey
+from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
@@ -81,3 +83,4 @@ class BaseModel:
         """ delete object
         """
         models.storage.delete(self)
+
