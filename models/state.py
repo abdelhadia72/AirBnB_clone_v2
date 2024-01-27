@@ -7,6 +7,8 @@ import shlex
 from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
+import os
+STORAGE_TYPE = os.environ.get('HBNB_TYPE_STORAGE')
 
 
 class State(BaseModel, Base):
@@ -21,7 +23,7 @@ class State(BaseModel, Base):
 
     @property
     def cities(self):
-        if models.storage.__class__.__name__ != 'DBStorage':
+        if STORAGE_TYPE != 'db':
             var = models.storage.all()
             lista = []
             result = []
