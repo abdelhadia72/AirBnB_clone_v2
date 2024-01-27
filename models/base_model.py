@@ -4,10 +4,6 @@ from sqlalchemy.ext.declarative import declarative_base
 import uuid
 import models
 from datetime import datetime
-from sqlalchemy import Column, Integer, String, DateTime
-from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, Integer, Float, DateTime, ForeignKey
-from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
@@ -16,6 +12,10 @@ class BaseModel:
     """This class will defines all common attributes/methods
     for other classes
     """
+    from sqlalchemy import Column, Integer, String, DateTime
+    from models.base_model import BaseModel, Base
+    from sqlalchemy import Column, String, Integer, Float, DateTime, ForeignKey
+    from sqlalchemy.orm import relationship
     id = Column(String(60), unique=True, nullable=False, primary_key=True)
     created_at = Column(DateTime, nullable=False, default=(datetime.utcnow()))
     updated_at = Column(DateTime, nullable=False, default=(datetime.utcnow()))
