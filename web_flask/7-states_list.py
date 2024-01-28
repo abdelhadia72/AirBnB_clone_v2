@@ -50,9 +50,9 @@ def even_or_odd(n):
 
 
 @app.teardown_appcontext
-def tear_down(self):
+def tear_down(error):
     """ close storage """
-    storage.close()
+    return storage.close()
 
 
 @app.route('/states_list')
