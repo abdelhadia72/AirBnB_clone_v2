@@ -2,7 +2,9 @@
 """ Flask application """
 
 from flask import Flask, render_template
+from models.state import State
 from models import storage
+from models import *
 app = Flask(__name__)
 
 
@@ -49,20 +51,18 @@ def even_or_odd(n):
     return render_template("6-number_odd_or_even.html", n=n)
 
 
-@app.teardown_appcontext
-def tear_down(error):
-    """ close storage """
-    return storage.close()
-
-
 @app.route('/states_list')
 def html_fetch_states():
     """display html page
        fetch sorted states to insert into html in UL tag
     """
-    state_objs = [s for s in storage.all("State").values()]
-    return render_template('7-states_list.html',
-                           state_objs=state_objs)
+    return render_template('7-states_list.html', states=storage.all(State))
+
+
+@app.teardown_appcontext
+def tear_down(error):
+    """ close storage """
+    return storage.close()
 
 
 if __name__ == '__main__':
