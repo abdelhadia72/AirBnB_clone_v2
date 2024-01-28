@@ -1,70 +1,27 @@
 #!/usr/bin/python3
-""" Flask application """
+"""Starts a Flask web application"""
+
 
 from flask import Flask, render_template
-from models.state import State
 from models import storage
 from models import *
+from models.state import State
+
 app = Flask(__name__)
 
 
-@app.route('/', strict_slashes=False)
-def hello():
-    """ say hello """
-    return 'Hello HBNB!'
-
-
-@app.route('/hbnb', strict_slashes=False)
-def hbnb():
-    """ show HBNB """
-    return 'HBNB'
-
-
-@app.route('/c/<text>', strict_slashes=False)
-def c(text):
-    """ show varible text """
-    return f'C {text.replace("_", " ")}'
-
-
-@app.route('/python/', strict_slashes=False)
-@app.route('/python/<text>', strict_slashes=False)
-def python(text='is_cool'):
-    """ show variable text """
-    return f'Python {text.replace("_", " ")}'
-
-
-@app.route('/number/<int:n>')
-def check_integer(n):
-    """ Show only integers """
-    return (f"{n} is a number")
-
-
-@app.route('/number_template/<int:n>')
-def number_template(n):
-    """ display number """
-    return render_template("5-number.html", n=n)
-
-
-@app.route('/number_odd_or_even/<int:n>')
-def even_or_odd(n):
-    """ display number even or odd """
-    return render_template("6-number_odd_or_even.html", n=n)
-
-
-@app.route('/states_list')
-def html_fetch_states():
-    """display html page
-       fetch sorted states to insert into html in UL tag
-    """
-    return render_template('7-states_list.html', states=storage.all(State))
+@app.route('/states_list', strict_slashes=False)
+def states_list():
+    """Displays an HTML page with render template"""
+    States = storage.all(State)
+    return render_template('7-states_list.html', states=States)
 
 
 @app.teardown_appcontext
-def tear_down(error):
-    """ close storage """
+def tear_db(exception):
+    """Closes the storage"""
     return storage.close()
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
     app.run(host='0.0.0.0', port=5000)
