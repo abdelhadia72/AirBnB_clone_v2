@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Falsk application"""
+"""list the states of my database"""
 
 
 from flask import Flask, render_template
@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route("/cities_by_states", strict_slashes=False)
 def cities_by_states():
-    """ display states and cities"""
+    """ cities by states """
 
     States = storage.all(State)
 
@@ -21,7 +21,7 @@ def cities_by_states():
 
 @app.teardown_appcontext
 def tear(e):
-    """ close storage """
+    """ tear """
     storage.close()
 
 
