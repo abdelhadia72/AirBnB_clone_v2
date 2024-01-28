@@ -16,6 +16,7 @@ def states_list():
     States = storage.all(State)
     return render_template('7-states_list.html', states=States)
 
+print(State)
 
 @app.teardown_appcontext
 def tear_db(exception):
@@ -24,4 +25,5 @@ def tear_db(exception):
 
 
 if __name__ == '__main__':
+    app.run(debug=True)
     app.run(host='0.0.0.0', port=5000)
